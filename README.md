@@ -1,0 +1,1 @@
+# WriteID-Writer-Handwriting-Identification---Using-RESNET50
