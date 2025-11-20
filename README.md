@@ -1,6 +1,66 @@
-# Handwriting Writer Recognizer and Identification using Deep Learning
+# WriteID — Handwriting Writer Identification
 
-This project explores the use of deep learning models for writer identification based on handwritten text samples. It includes implementations of a Siamese Network and a ResNet50-based classifier to distinguish between different writers using the IAM Handwriting Database.
+A compact project demonstrating writer identification from handwriting images using deep learning (ResNet50 and a Siamese-style approach). The repository contains two Jupyter notebooks that show data preparation, model definition, training, and evaluation on a subset of the IAM Handwriting Database.
+
+**Repository files**
+- `Resnet.ipynb`: ResNet50-based classifier using transfer learning (224x224 inputs).
+- `Siamese_Net.ipynb`: Siamese-style model using ResNet50 as a feature extractor (128x128 inputs).
+- `README.md`: This file.
+
+**Goals**
+- Provide reproducible notebooks to explore writer identification using convolutional neural networks.
+- Demonstrate dataset preprocessing, label encoding, training, and evaluation workflows.
+
+**Quick start (local, Windows)**
+1. Create and activate a virtual environment:
+    ```powershell
+    python -m venv .venv
+    .\.venv\Scripts\Activate.ps1   # PowerShell
+    ```
+2. Install core dependencies (not exhaustive):
+    ```powershell
+    pip install tensorflow numpy pandas opencv-python matplotlib scikit-learn kagglehub tqdm
+    ```
+3. Open the notebooks in Jupyter Lab / Notebook and run the cells:
+    ```powershell
+    pip install jupyterlab
+    jupyter lab
+    ```
+
+**Dataset**
+- This project uses a subset of the IAM Handwriting Database (top writers). A common source used in the notebooks is the Kaggle dataset: https://www.kaggle.com/datasets/tejasreddy/iam-handwriting-top50
+- The notebooks use `kagglehub` (or manual download) to obtain the subset. If you download manually, update the `image_dir` and `txt_path` variables inside the notebooks to point to your local dataset location.
+
+**Notebooks overview**
+- `Resnet.ipynb` — Uses `tensorflow.keras.applications.ResNet50` (include_top=False) with an added classification head. Images are resized to 224x224 and preprocessed with `resnet50.preprocess_input`.
+- `Siamese_Net.ipynb` — Builds a Siamese-style pipeline using ResNet50 as feature extractor; image inputs are 128x128 in the notebook. Contrastive or pair-based training is demonstrated.
+
+**Requirements (suggested)**
+- Python 3.8+ (3.9 or 3.10 recommended)
+- tensorflow
+- numpy
+- pandas
+- opencv-python
+- matplotlib
+- scikit-learn
+- kagglehub (optional — used for dataset download in notebooks)
+- tqdm
+
+Install with:
+```powershell
+pip install tensorflow numpy pandas opencv-python matplotlib scikit-learn kagglehub tqdm
+```
+
+**Usage notes**
+- Adjust dataset paths in the notebooks if you are running locally (the notebooks assume a specific download path used by `kagglehub` or Kaggle environments).
+- Training deep models is GPU-accelerated: use a GPU-enabled environment for reasonable training times.
+- The notebooks include cells that install packages; when running locally you can skip those cells if you installed dependencies already.
+
+**Contributing**
+- Improvements, bug fixes, and documentation updates are welcome. If this repo is on GitHub, open an issue or submit a pull request.
+
+**License & attribution**
+- This repository is provided for educational and research purposes. Check for a `LICENSE` file in the project; if none is present, assume permissive, educational use only and cite original datasets and libraries when reusing the code.
 
 
 
